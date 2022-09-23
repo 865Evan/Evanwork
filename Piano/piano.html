@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Piano</title>
+    <link rel="stylesheet" type="text/css" href="css/piano.css" />
+</head>
+
+<body>
+    <section>
+        <audio src="audio/c4.ogg" id="myaudio" ></audio>
+
+
+        <ul>
+            <li>
+                <div class="key whiteKey" onclick="myplay(this)">c4</div>
+                <div class="key blackKey" onclick="myplay(this)">c4m</div>
+            </li>
+            <li>
+                <div class="key whiteKey" onclick="myplay(this)">d4</div>
+                <div class="key blackKey" onclick="myplay(this)">d4m</div>
+            </li>
+            <li>
+                <div class="key whiteKey" onclick="myplay(this)">e4</div>
+            </li>
+            <li>
+                <div class="key whiteKey" onclick="myplay(this)">g4</div>
+                <div class="key blackKey" onclick="myplay(this)">g4m</div>
+            </li>
+            <li>
+                <div class="key whiteKey" onclick="myplay(this)">a4</div>
+                <div class="key blackKey" onclick="myplay(this)">a4m</div>
+            </li>
+            <li>
+                <div class="key whiteKey" onclick="myplay(this)">b4</div>
+            </li>
+            <li class="nobd">
+                <div class="key whiteKey" onclick="myplay(this)">c5</div>
+            </li>
+        </ul>
+    </section>
+
+
+    <script>
+
+        // 获取所有琴键
+        var mydivs = document.getElementsByTagName("ul")[0].getElementsByTagName("div");
+
+        // 获取所有audio音源
+        var myaudio = document.getElementById("myaudio");
+
+        console.log(myaudio);
+
+        var x;
+
+        var srclist = ["audio/c4.mp3",
+            "audio/c4m.ogg",
+            "audio/d4.mp3",
+            "audio/d4m.ogg",
+            "audio/e4.mp3",
+            "audio/f4.mp3",
+            "audio/f4m.ogg",
+            "audio/g4.mp3",
+            "audio/g4m.ogg",
+            "audio/a4.mp3",
+            "audio/a4m.ogg",
+            "audio/b4.mp3",
+            "audio/c5.mp3",]
+
+        function myplay(e) {
+            for (let i = 0; i < 14; i++) {
+                if (mydivs[i] == e) x = i
+            }
+            myaudio.src = srclist[x]
+            myaudio.load()
+            myaudio.play()
+        }
+
+
+
+        document.onkeypress = function (e) {
+            e = e || Window.event
+            if (e.keyCode == 99) { myaudio.src = srclist[0]; myaudio.load(); myaudio.play(); }
+            else if (e.keyCode == 100) { myaudio.src = srclist[2]; myaudio.load(); myaudio.play(); }
+            else if (e.keyCode == 101) { myaudio.src = srclist[4]; myaudio.load(); myaudio.play(); }
+            else if (e.keyCode == 102) { myaudio.src = srclist[5]; myaudio.load(); myaudio.play(); }
+            else if (e.keyCode == 103) { myaudio.src = srclist[7]; myaudio.load(); myaudio.play(); }
+            else if (e.keyCode == 97) { myaudio.src = srclist[9]; myaudio.load(); myaudio.play(); }
+            else if (e.keyCode == 98) { myaudio.src = srclist[11]; myaudio.load(); myaudio.play(); }
+        }
+    </script>
+</body>
+
+</html>
